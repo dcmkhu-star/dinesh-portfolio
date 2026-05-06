@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dinesh Kumar Ammaiappan - Procurement and Operations Analyst, Consumer Analytics, New York." />
+  <title>Dinesh Kumar Ammaiappan | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B2544;
+      --navy-2: #071a31;
+      --navy-3: #10335b;
+      --gold: #C9A84C;
+      --gold-rgb: 201, 168, 76;
+      --text: #f6f1e7;
+      --muted: #a9b7c8;
+      --line: rgba(255, 255, 255, 0.13);
+      --panel: rgba(255, 255, 255, 0.055);
+      --green: #55d98c;
+      --purple: #b19cff;
+      --orange: #f0a35f;
+      --indigo: #93a7ff;
+      --serif: "Cormorant Garamond", serif;
+      --sans: "Outfit", sans-serif;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      cursor: none;
+      background: var(--navy);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a, button, input, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: none; }
+
+    .cursor-orb {
+      position: fixed;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      z-index: 9999;
+      will-change: transform;
+    }
+    .cursor-orb {
+      width: 12px;
+      height: 12px;
+      margin: -6px 0 0 -6px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(var(--gold-rgb), 0.9), 0 0 34px rgba(var(--gold-rgb), 0.35);
+      transform: rotate(-45deg);
+      transition: width 180ms ease, height 180ms ease, margin 180ms ease, box-shadow 180ms ease;
+    }
+    body.cursor-hover .cursor-orb {
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      animation: orbPulse 1.15s ease-in-out infinite;
+    }
+    @keyframes orbPulse {
+      0%, 100% { box-shadow: 0 0 16px rgba(var(--gold-rgb), 0.95), 0 0 34px rgba(var(--gold-rgb), 0.35); }
+      50% { box-shadow: 0 0 24px rgba(var(--gold-rgb), 1), 0 0 58px rgba(var(--gold-rgb), 0.62); }
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 26, 49, 0.76);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .nav-links a {
+      position: relative;
+      transition: color 180ms ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -9px;
+      height: 1px;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.7);
+    }
+    .hire-btn, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 8px;
+      padding: 0 18px;
+      border: 1px solid var(--gold);
+      transition: transform 200ms ease, background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+      white-space: nowrap;
+    }
+    .hire-btn, .btn-primary {
+      background: var(--gold);
+      color: #071a31;
+      font-weight: 600;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+    }
+    .hire-btn:hover, .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(var(--gold-rgb), 0.18);
+    }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--text);
+      font-size: 1.6rem;
+    }
+
+    section { padding: 110px 0; position: relative; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding-top: 140px;
+      background:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        radial-gradient(circle at 74% 18%, rgba(var(--gold-rgb), 0.16), transparent 34%),
+        linear-gradient(180deg, var(--navy), var(--navy-2));
+      background-size: 48px 48px, 48px 48px, auto, auto;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .eyebrow, .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 0 rgba(var(--gold-rgb), 0.55);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 11px rgba(var(--gold-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--gold-rgb), 0); }
+    }
+    h1, h2, h3 {
+      font-family: var(--serif);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+    h1 {
+      font-size: clamp(4rem, 9vw, 8.8rem);
+      margin: 22px 0 20px;
+    }
+    h2 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      margin: 12px 0 16px;
+    }
+    h3 { font-size: 1.75rem; }
+    .gold-italic { color: var(--gold); font-style: italic; }
+    .role-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text);
+      font-size: clamp(1rem, 1.8vw, 1.22rem);
+      margin-bottom: 20px;
+    }
+    .role-line::before {
+      content: "";
+      width: 72px;
+      height: 1px;
+      background: var(--gold);
+      flex: 0 0 auto;
+    }
+    .desc {
+      max-width: 710px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; }
+    .badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.035);
+      color: var(--muted);
+      border-radius: 6px;
+      font-size: 0.88rem;
+    }
+    .badge.green { color: var(--green); border-color: rgba(85,217,140,0.36); }
+    .hero-card {
+      border: 1px solid rgba(var(--gold-rgb), 0.38);
+      background: linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.025));
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .stat {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .stat:first-child { padding-top: 0; }
+    .stat-value {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(56px, 6vw, 76px);
+      font-weight: 700;
+      line-height: 0.9;
+    }
+    .stat-label { color: var(--muted); margin-top: 10px; }
+    .ops-label {
+      color: var(--text);
+      margin-top: 22px;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ticker-wrap {
+      border-block: 1px solid var(--line);
+      background: rgba(255,255,255,0.035);
+      overflow: hidden;
+      padding: 20px 0;
+    }
+    .ticker {
+      display: flex;
+      gap: 28px;
+      width: max-content;
+      animation: marquee 42s linear infinite;
+    }
+    .ticker-wrap:hover .ticker { animation-play-state: paused; }
+    .ticker span {
+      color: var(--text);
+      white-space: nowrap;
+      font-size: 0.96rem;
+    }
+    .ticker span::after {
+      content: "·";
+      color: var(--gold);
+      margin-left: 28px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .section-head { margin-bottom: 44px; max-width: 800px; }
+    .section-head.center { text-align: center; margin-inline: auto; }
+    .subtitle { color: var(--muted); font-size: 1.06rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card, .project-card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 26px;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, opacity 220ms ease;
+    }
+    .card:hover, .project-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(var(--gold-rgb), 0.75);
+      box-shadow: 0 18px 48px rgba(var(--gold-rgb), 0.11);
+    }
+    .icon { font-size: 2rem; margin-bottom: 16px; }
+    .card h3 { margin-bottom: 12px; color: var(--text); }
+    .card p, .timeline p, .project-card p { color: var(--muted); }
+
+    .warning {
+      border: 1px solid rgba(var(--gold-rgb), 0.58);
+      background: rgba(var(--gold-rgb), 0.10);
+      color: #f5e8b6;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 34px;
+      font-weight: 500;
+    }
+    .timeline { display: grid; gap: 22px; }
+    .timeline-item {
+      border-left: 2px solid var(--gold);
+      padding: 24px 24px 24px 28px;
+      background: rgba(255,255,255,0.043);
+      border-radius: 0 8px 8px 0;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 32px;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+    .timeline h3 { font-size: 2rem; }
+    .company, .date { color: var(--muted); }
+    .employment-tag {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      padding: 0 8px;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      background: transparent;
+      white-space: nowrap;
+    }
+    .employment-tag.green { color: var(--green); }
+    .employment-tag.gold { color: var(--gold); }
+    .employment-tag.purple { color: var(--purple); }
+    .timeline ul { margin: 16px 0 18px 18px; color: var(--muted); }
+    .timeline li { margin-bottom: 9px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .tag {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      background: transparent;
+    }
+    .education { margin-top: 46px; }
+    .education h3 { color: var(--gold); margin-bottom: 10px; }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.035);
+      color: var(--muted);
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: border-color 200ms ease, color 200ms ease, background 200ms ease;
+    }
+    .filter-btn.active {
+      background: var(--gold);
+      color: #071a31;
+      border-color: var(--gold);
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: rgba(255,255,255,0.052);
+    }
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(145deg, rgba(var(--gold-rgb), 0.14), rgba(255,255,255,0.052));
+      border-color: rgba(var(--gold-rgb), 0.5);
+    }
+    .project-card.featured.wide { grid-column: span 3; }
+    .project-card.hide { display: none; }
+    .cat {
+      width: fit-content;
+      padding: 5px 9px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      font-weight: 600;
+      background: transparent;
+    }
+    .cat.masters { color: var(--indigo); }
+    .cat.bcom { color: var(--orange); }
+    .cat.personal { color: var(--gold); }
+    .project-card h3 { font-size: 1.75rem; margin-bottom: 10px; }
+    .project-subtitle {
+      color: var(--gold);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .features { color: var(--muted); margin: 16px 0 16px 18px; }
+    .project-note {
+      margin-top: 18px;
+      color: var(--text);
+      font-size: 0.92rem;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .skill-block h3 { color: var(--gold); }
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 16px;
+    }
+    .skill {
+      padding: 8px 11px;
+      border-radius: 6px;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--line);
+      font-size: 0.86rem;
+    }
+    .skill.hot {
+      color: #071a31;
+      background: var(--gold);
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+    .mini-section { margin-top: 26px; }
+    .mini-section h3 { margin-bottom: 14px; color: var(--text); }
+    .mini-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      color: var(--muted);
+    }
+    .mini-list div {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 38px;
+      align-items: start;
+    }
+    .contact-info { display: grid; gap: 16px; color: var(--muted); }
+    .contact-info a:hover { color: var(--gold); }
+    form {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.055);
+      padding: 26px;
+      border-radius: 8px;
+    }
+    .field { margin-bottom: 16px; }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(4, 16, 30, 0.62);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 13px 14px;
+      outline: none;
+      transition: border-color 180ms ease;
+    }
+    input:focus, textarea:focus { border-color: var(--gold); }
+    textarea { min-height: 145px; resize: vertical; }
+    .success {
+      display: none;
+      color: var(--green);
+      margin-top: 14px;
+      font-weight: 500;
+    }
+    form.sent .success { display: block; }
+    form.sent button { background: var(--green); border-color: var(--green); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 22px;
+      color: var(--muted);
+      background: var(--navy-2);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-brand {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .footer-links { display: flex; gap: 16px; justify-content: end; }
+    .footer-links a:hover { color: var(--gold); }
+    .signature {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      body { cursor: auto; }
+      button, a { cursor: pointer; }
+      .cursor-orb { display: none; }
+      .nav-links, .hire-btn { display: none; }
+      .menu-btn { display: block; }
+      .nav-links.open {
+        display: grid;
+        position: absolute;
+        top: 76px;
+        left: 20px;
+        right: 20px;
+        padding: 18px;
+        background: rgba(7,26,49,0.97);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .project-card.featured, .project-card.featured.wide { grid-column: span 2; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(100% - 28px, 1180px); }
+      section { padding: 78px 0; }
+      .hero { padding-top: 116px; }
+      h1 { font-size: clamp(3.3rem, 18vw, 5.4rem); }
+      h2 { font-size: clamp(2.35rem, 14vw, 4rem); }
+      .grid-2, .grid-3, .mini-list { grid-template-columns: 1fr; }
+      .project-card.featured, .project-card.featured.wide { grid-column: span 1; }
+      .timeline-top { flex-direction: column; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .role-line { align-items: flex-start; }
+      .role-line::before { width: 38px; margin-top: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-orb"></div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">DKA.</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="hire-btn">Hire Me</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="pulse-dot"></span>Open to Opportunities · New York, NY</div>
+          <h1>Dinesh Kumar<br><span class="gold-italic">Ammaiappan.</span></h1>
+          <div class="role-line">Procurement & Operations · Consumer Analytics · Business Strategy</div>
+          <p class="desc">Procurement and operations analyst with a rare combination of financial research training, consumer data analytics, and regulated supply chain execution. Based in New York. Open to opportunities across pharmacy, healthcare, hospitality, and consumer business.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <a class="btn btn-ghost" href="#contact">Let's Talk</a>
+          </div>
+          <div class="badges">
+            <span class="badge green">● Open to Work</span>
+            <span class="badge">📍 New York, NY</span>
+            <span class="badge">Analytics · Operations · Strategy</span>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal" id="statsCard">
+          <div class="stat">
+            <div class="stat-value"><span data-count="1000">0</span>+</div>
+            <div class="stat-label">Medication SKUs managed daily</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value"><span data-count="98">0</span>%</div>
+            <div class="stat-label">Stock accuracy maintained</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value"><span data-count="12">0</span>%</div>
+            <div class="stat-label">Cost reduction achieved</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">$<span data-count="25">0</span>K+</div>
+            <div class="stat-label">Annual savings identified</div>
+          </div>
+          <div class="ops-label">Backend Pharmacy Operation</div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="ticker-wrap" aria-label="Skills ticker">
+      <div class="ticker">
+        <span>Power BI</span><span>DEA Compliance</span><span>Excel Advanced</span><span>Demand Forecasting</span><span>Procurement Strategy</span><span>Vendor Management</span><span>Tableau</span><span>SKU Management</span><span>Spend Analysis</span><span>Consumer Analytics</span><span>PrimeRX</span><span>Financial Ratio Analysis</span><span>Chi-Square Testing</span><span>Data Mining</span><span>CRM Strategy</span><span>Market Research</span><span>ERP Systems</span><span>Statistical Modeling</span><span>Business Operations</span><span>Inventory Planning</span><span>Cost Reduction</span><span>Supplier Negotiation</span>
+        <span>Power BI</span><span>DEA Compliance</span><span>Excel Advanced</span><span>Demand Forecasting</span><span>Procurement Strategy</span><span>Vendor Management</span><span>Tableau</span><span>SKU Management</span><span>Spend Analysis</span><span>Consumer Analytics</span><span>PrimeRX</span><span>Financial Ratio Analysis</span><span>Chi-Square Testing</span><span>Data Mining</span><span>CRM Strategy</span><span>Market Research</span><span>ERP Systems</span><span>Statistical Modeling</span><span>Business Operations</span><span>Inventory Planning</span><span>Cost Reduction</span><span>Supplier Negotiation</span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-tag">What I Do</div>
+          <h2>Where I Create Real Impact</h2>
+          <p class="subtitle">Operations, analytics, and business strategy - across healthcare, consumer markets, and new ventures.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card reveal"><div class="icon">📦</div><h3>Procurement & Operations</h3><p>End-to-end purchasing, supplier negotiation, inventory control, and cost reduction strategy. Proven in a regulated environment managing 1,000+ SKUs with DEA compliance - the same operational discipline that keeps any supply-driven business running efficiently.</p></article>
+          <article class="card reveal"><div class="icon">📊</div><h3>Data & Inventory Analytics</h3><p>Power BI and Excel dashboards that turn raw stock data into decisions. Self-initiated a 10-year pharmaceutical trend analysis on my own time - because operational data always has a story worth finding.</p></article>
+          <article class="card reveal"><div class="icon">💹</div><h3>Financial & Business Research</h3><p>Five-year financial statement analysis on real companies. Investment behavior studies with statistical testing. B2B financial reviews for 50+ clients. The analytical foundation to evaluate any business opportunity with rigor.</p></article>
+          <article class="card reveal"><div class="icon">🚀</div><h3>Business Strategy & New Ventures</h3><p>Commerce and business education from the ground up - accountancy, economics, market research. Experience inside real business operations from a family trading business to B2B manufacturing. Ready to apply these skills to new ideas and industries.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-tag">Experience</div>
+          <h2>Operations With Proof</h2>
+        </div>
+        <div class="warning reveal">Backend Pharmacy Operation</div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-top"><div><h3>Inventory & Procurement Operations Analyst</h3><p class="company">Andy Pharmacy · New York, NY</p><p class="date">Jan 2024 - Present</p></div><span class="employment-tag green">Full-Time · Current</span></div>
+            <ul><li>Own end-to-end daily purchasing for 1,000+ medication SKUs across wholesalers and manufacturers - 98% stock accuracy through systematic reorder and usage-trend analysis.</li><li>Reduced total drug spend by 12% through competitive supplier comparison, generic substitution, and pricing renegotiation - identified $25K+ in annual process savings.</li><li>Built and maintain Power BI and Excel dashboards tracking spend, shortages, fast-movers, and monthly purchase forecasts for management decision-making.</li><li>Maintain all DEA-required controlled substance documentation (Schedule II-V) - zero compliance violations across all audits.</li><li>Self-initiated 10-year antidepressant medication trend analysis - conducted independently, produced business and procurement insights beyond standard job scope.</li></ul>
+            <div class="tags"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">DEA Compliance</span><span class="tag">PrimeRX</span><span class="tag">Demand Forecasting</span><span class="tag">Vendor Management</span></div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-top"><div><h3>Inventory & Procurement Analyst - Intern</h3><p class="company">Thriftcare Pharmacy · New York, NY</p><p class="date">Sep 2023 - Dec 2023</p></div><span class="employment-tag gold">Internship</span></div>
+            <ul><li>Reduced inventory waste by 65% in one quarter through reorder controls, expiry monitoring, and SKU rationalization across 500+ products.</li><li>Managed 10+ vendor relationships - product availability, pricing confirmation, order follow-up.</li><li>Resolved PO-to-invoice discrepancies; built Excel trackers for inventory accuracy and reorder triggers.</li></ul>
+            <div class="tags"><span class="tag">Excel</span><span class="tag">SKU Management</span><span class="tag">Invoice Reconciliation</span><span class="tag">Supplier Management</span></div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-top"><div><h3>Business Operations & Procurement Lead</h3><p class="company">Guru Traders · Coimbatore, India</p><p class="date">2022</p></div><span class="employment-tag purple">Entrepreneurial Experience</span></div>
+            <ul><li>Raised in an entrepreneurial family, learning business operations from the ground up - purchasing decisions, supplier relationships, stock management, and how a trading business actually runs day-to-day.</li><li>Took ownership of the procurement and inventory function - managing FMCG buying, stock replenishment, and supplier negotiations across all product categories.</li><li>This real-world immersion in how a business buys, stocks, and sells is what sparked the decision to formalize the knowledge through a Master's degree in Consumer Analytics in New York City.</li></ul>
+            <div class="tags"><span class="tag">FMCG Procurement</span><span class="tag">Inventory Management</span><span class="tag">Supplier Negotiation</span><span class="tag">Business Operations</span></div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-top"><div><h3>Finance Intern</h3><p class="company">Sravn Financial Services · Tamil Nadu, India</p><p class="date">2022</p></div><span class="employment-tag gold">Internship</span></div>
+            <ul><li>Hands-on Indian stock market operations, risk management, and investment strategy.</li><li>Executed live micro-investments generating real returns for the firm - not simulations.</li></ul>
+            <div class="tags"><span class="tag">Stock Market</span><span class="tag">Risk Management</span><span class="tag">Investment Analysis</span></div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-top"><div><h3>Marketing & Finance Intern</h3><p class="company">Metal Shapes (B2B Manufacturing) · Coimbatore, India</p><p class="date">Jun 2021 - Jan 2022</p></div><span class="employment-tag gold">Internship</span></div>
+            <ul><li>Cross-functional exposure across finance, operations, and procurement - site visits, director-level business reviews, 50+ B2B client financial analyses.</li><li>Assisted competitive analysis, benchmarking, and budgeting evaluations.</li></ul>
+            <div class="tags"><span class="tag">B2B Finance</span><span class="tag">Financial Reporting</span><span class="tag">Competitive Analysis</span><span class="tag">Operations</span></div>
+          </article>
+        </div>
+
+        <div class="education grid-2">
+          <article class="card reveal"><h3>MS · Consumer Analytics</h3><p>LIM College · New York, NY · Jan-Dec 2023</p><p><strong>Coursework:</strong> Data Mining · Data Visualization · Consumer Experience · Business Spreadsheet Analytics · Multivariate Statistical Analysis · Strategic Marketing Management · Research Design and Applications · Consumer Relationship Management · Advanced Marketing Metrics</p></article>
+          <article class="card reveal"><h3>BCom Computer Applications</h3><p>PSG College of Arts & Science · India · Jul 2019-Jun 2022</p><p><strong>Minor:</strong> Computer Applications</p><p><strong>Coursework:</strong> Statistics · Mathematics · Cost Accounting · Financial Accounting · Corporate Accounting · Management Accounting · Enterprise Resource Planning · Business Law · Business Economics · Business Communications · Primary & Secondary Market · Fundamentals of E-Commerce & M-Commerce</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="section-tag">Projects</div>
+          <h2>Analytics Work & Research</h2>
+          <p class="subtitle">Business research and data analysis spanning finance, consumer behavior, and pharmaceutical operations.</p>
+        </div>
+        <div class="filters reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="masters">Masters · LIM</button>
+          <button class="filter-btn" data-filter="bcom">BCom Research</button>
+          <button class="filter-btn" data-filter="personal">Personal Build</button>
+        </div>
+        <div class="grid-3" id="projectGrid">
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>H&M Sales Prediction</h3><p>Predictive modeling to forecast best-seller apparel items. Regression and ML approach to reduce markdown risk and align inventory with market demand.</p><div class="tags"><span class="tag">Predictive Modeling</span><span class="tag">Regression</span><span class="tag">Data Mining</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Target Financial Performance</h3><p>KPI deep-dive: revenue, gross margins, digital growth. Benchmarked against competitors with capital allocation recommendations.</p><div class="tags"><span class="tag">Financial Analysis</span><span class="tag">KPI Dashboards</span><span class="tag">Benchmarking</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Crocs Market Analysis</h3><p>Large-scale dataset: brand resonance drivers, seasonal demand shifts, under-served regional markets.</p><div class="tags"><span class="tag">Consumer Analytics</span><span class="tag">Data Visualization</span><span class="tag">Market Research</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Macy's CRM Strategy</h3><p>Customer segmentation by CLV, automated marketing triggers, personalized retention campaigns.</p><div class="tags"><span class="tag">CRM</span><span class="tag">CLV Analysis</span><span class="tag">Segmentation</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Macy's Media Plan</h3><p>ROAS-focused multi-channel media strategy for seasonal campaigns. Audience segmentation to reduce waste and maximize conversion.</p><div class="tags"><span class="tag">Media Planning</span><span class="tag">ROAS</span><span class="tag">Audience Segmentation</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Thanksgiving Consumer Analysis</h3><p>Consumer spending and traffic during peak shopping window. Physical vs digital channel shift analysis for Q4 optimization.</p><div class="tags"><span class="tag">Consumer Analytics</span><span class="tag">Trend Analysis</span><span class="tag">Consumer Behavior</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Ritu Kumar Consumer Experience</h3><p>End-to-end customer journey mapping for luxury fashion. Friction point reduction and loyalty framework.</p><div class="tags"><span class="tag">Consumer Experience</span><span class="tag">Journey Mapping</span><span class="tag">Qualitative Research</span></div></article>
+          <article class="project-card reveal" data-category="masters"><span class="cat masters">Masters</span><h3>Levi's Research Proposal</h3><p>Formal research methodology for consumer attitude tracking and sustainable product line evaluation.</p><div class="tags"><span class="tag">Research Design</span><span class="tag">Survey Methodology</span><span class="tag">Market Testing</span></div></article>
+          <article class="project-card reveal" data-category="bcom"><span class="cat bcom">BCom Research</span><h3>Roots Industries - Financial Performance</h3><p>5-year financial statement analysis identifying a "buying growth" strategy - aggressive credit expansion masking a dangerous cash-poor position behind a healthy Acid Test ratio.</p><div class="tags"><span class="tag">Ratio Analysis</span><span class="tag">Trend Analysis</span><span class="tag">Common-Size Statements</span></div></article>
+          <article class="project-card reveal" data-category="bcom"><span class="cat bcom">BCom Research</span><h3>ING Vysya - Investor Behavior Study</h3><p>Primary research with 150 real investors. Chi-square analysis revealing a Risk Gap paradox between stated and actual risk tolerance.</p><div class="tags"><span class="tag">Primary Research</span><span class="tag">Chi-Square Testing</span><span class="tag">Investor Psychology</span></div></article>
+          <article class="project-card reveal" data-category="bcom"><span class="cat bcom">BCom Research</span><h3>Big Bazaar - Employee Retention Strategy</h3><p>Workforce demographic analysis for a 214-store chain. Developed the RRR (Rewards, Recognition, Respect) model from dissatisfaction matrix data.</p><div class="tags"><span class="tag">HR Analytics</span><span class="tag">Workforce Data</span><span class="tag">Strategic Framework</span></div></article>
+          <article class="project-card reveal" data-category="bcom"><span class="cat bcom">BCom Research</span><h3>Online vs Offline Learning Study</h3><p>Comparative study across attention, concentration, motivation, accountability. Built a 3-pillar hybrid strategy framework for institutions.</p><div class="tags"><span class="tag">Survey Research</span><span class="tag">Frequency Distribution</span><span class="tag">Comparative Analysis</span></div></article>
+
+          <article class="project-card featured wide reveal" data-category="personal"><span class="cat personal">Independent Research · 2015-2024 · Available on Request</span><h3>Antidepressant Utilization Analysis - 10 Year Study</h3><p class="project-subtitle">Independent Research · Andy Pharmacy · 2015-2024</p><p>A self-initiated 10-year analysis of antidepressant medication utilization patterns conducted independently while working as a pharmacy procurement analyst. Extracted and cleaned 10 years of pharmacy utilization data for the top 200 drugs, standardized drug names across NDC codes and manufacturer variations, and built a multi-layered analytical framework from scratch.</p><p>The study analyzed 6 antidepressants (Bupropion, Citalopram, Escitalopram, Mirtazapine, Sertraline, Trazodone) across 5 analytical dimensions: overall utilization trends, prescription volume by drug, quantity per prescription, relative market share shifts, and SSRI vs Non-SSRI category-level index growth using 2015 as the base year.</p><p>Key findings: overall antidepressant usage rose significantly from 2018 onward, with a notable acceleration post-2020 consistent with pandemic-related mental health trends. SSRIs grew their index from 100 in 2015 to approximately 145 by 2022 before stabilizing. Sertraline and Escitalopram gained market share while Citalopram declined. Trazodone 100mg showed the highest quantity intensity at 467 units per prescription. Category-level index growth showed that volume declines in individual drugs do not necessarily reflect overall category decline - a non-obvious insight with direct procurement planning implications.</p><div class="tags"><span class="tag">Excel</span><span class="tag">Data Cleaning</span><span class="tag">NDC Standardization</span><span class="tag">Index Analysis</span><span class="tag">Trend Analysis</span><span class="tag">Pharmaceutical Data</span><span class="tag">Pharmacy Analytics</span></div><div class="project-note">Conducted independently - outside regular job scope. Full report available on request.</div></article>
+
+          <article class="project-card featured reveal" data-category="personal"><span class="cat personal">Personal Build</span><h3>AndyBot</h3><p class="project-subtitle">Personal Build · In Development · Pharmacy Intelligence Platform</p><p>An intelligent medicine information platform - currently in active development. Built from real operational experience inside a pharmacy, solving a problem I watched patients and professionals struggle with every day.</p><p>AndyBot is designed to bridge the gap between complex pharmaceutical data and the people who need it most. The platform integrates official FDA and NIH drug label data to power instant, reliable drug information for both patients and healthcare professionals.</p><p>More details coming soon - this project is in active development and I'm intentionally keeping the full scope private until launch.</p><div class="tags"><span class="tag">Drug Information</span><span class="tag">Interaction Checker</span><span class="tag">Pill Finder</span><span class="tag">Bilingual Support</span><span class="tag">AI-Powered Search</span><span class="tag">FDA + NIH Data</span></div><div class="project-note">🔒 Full details available in conversation - not public yet.</div><div class="actions" style="margin:18px 0 0;"><a class="btn btn-primary" href="#contact">Reach Out to Learn More</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-tag">Skills</div>
+          <h2>The Full Toolkit</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card skill-block reveal"><h3>Procurement & Operations</h3><div class="skill-list"><span class="skill hot">DEA Compliance</span><span class="skill hot">Vendor Management</span><span class="skill hot">Procurement Strategy</span><span class="skill">SKU Management</span><span class="skill">Supplier Negotiation</span><span class="skill">Back-order Resolution</span><span class="skill">Generic Substitution</span><span class="skill">PrimeRX</span><span class="skill">McKesson Connect</span><span class="skill">FMCG Buying</span><span class="skill">Business Operations</span></div></article>
+          <article class="card skill-block reveal"><h3>Data & Analytics</h3><div class="skill-list"><span class="skill hot">Power BI</span><span class="skill hot">Excel Advanced</span><span class="skill">Tableau</span><span class="skill">Data Mining</span><span class="skill">Demand Forecasting</span><span class="skill">Spend Analysis</span><span class="skill">Statistical Modeling</span><span class="skill">Chi-Square Testing</span><span class="skill">Google Workspace</span><span class="skill">Data Visualization</span><span class="skill">Index Analysis</span></div></article>
+          <article class="card skill-block reveal"><h3>Finance & Business</h3><div class="skill-list"><span class="skill hot">Financial Ratio Analysis</span><span class="skill hot">Business Strategy</span><span class="skill">Investment Research</span><span class="skill">Common-Size Statements</span><span class="skill">Consumer Analytics</span><span class="skill">CRM Strategy</span><span class="skill">Market Research</span><span class="skill">Research Design</span><span class="skill">ERP Systems</span><span class="skill">Cost Accounting</span><span class="skill">Business Economics</span></div></article>
+        </div>
+        <div class="mini-section reveal">
+          <h3>Certifications</h3>
+          <div class="mini-list">
+            <div>🏆 Project Management: Procurement - LinkedIn Learning</div><div>🏆 Supply Chain Foundations: Inventory Management - CSCMP</div><div>📊 Statistics for Business - PSG College</div><div>📊 Probability & Statistics - PSG College</div><div>🧠 Positive Psychology - UNC Chapel Hill · Coursera</div><div>💬 Enhancing Soft Skills & Personality - IIT · NPTEL</div>
+          </div>
+        </div>
+        <div class="mini-section reveal">
+          <h3>Leadership</h3>
+          <div class="mini-list">
+            <div>⭐ Orientation Leader - LIM College · Guided 100+ students through onboarding, coordinated 9+ campus events</div>
+            <div>⭐ Student Head Representative - PSG College · Coordinated 60-100 interviewees, supported 200+ peers</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-tag">Contact</div>
+          <h2>Let's build something<br><span class="gold-italic">worth talking about.</span></h2>
+          <p class="subtitle">Whether it's a role in procurement or analytics, a new business venture, or a conversation about AndyBot - I'm open to all of it. Let's talk.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p>📍 New York, NY</p>
+            <p>✉️ <a href="mailto:dk.ammaiappan@gmail.com">dk.ammaiappan@gmail.com</a></p>
+            <p>📞 <a href="tel:+16465925992">(646) 592-5992</a></p>
+            <p>🔗 <a href="https://www.linkedin.com/in/dinesh-kumar-ammaiappan/" target="_blank" rel="noreferrer">linkedin.com/in/dinesh-kumar-ammaiappan</a></p>
+          </div>
+          <form class="reveal" id="contactForm">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+            <div class="field"><label for="topic">What's this about?</label><input id="topic" name="topic" placeholder="Job opportunity · Business idea · AndyBot · Just saying hi"></div>
+            <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me more..." required></textarea></div>
+            <button class="btn btn-primary" type="submit">Send Message →</button>
+            <div class="success">✓ Message sent - I'll be in touch!</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">DKA.</div>
+      <div>Dinesh Kumar Ammaiappan · New York · 2026</div>
+      <div class="footer-links"><a href="mailto:dk.ammaiappan@gmail.com">Email</a><a href="https://www.linkedin.com/in/dinesh-kumar-ammaiappan/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+    </div>
+    <div class="signature">Designed &amp; Built by Dinesh Kumar Ammaiappan</div>
+  </footer>
+
+  <script>
+    const orb = document.querySelector('.cursor-orb');
+    const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const orbPos = { x: pointer.x, y: pointer.y };
+
+    window.addEventListener('mousemove', (event) => {
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+    });
+
+    function animateCursor() {
+      orbPos.x += (pointer.x - orbPos.x) * 0.34;
+      orbPos.y += (pointer.y - orbPos.y) * 0.34;
+      orb.style.transform = `translate3d(${orbPos.x}px, ${orbPos.y}px, 0) rotate(-45deg)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, input, textarea').forEach((el) => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navItems = [...navLinks.querySelectorAll('a')];
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const activeLink = navItems.find((link) => link.getAttribute('href') === `#${entry.target.id}`);
+        navItems.forEach((link) => link.classList.toggle('active', link === activeLink));
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+    document.querySelectorAll('main section[id]').forEach((section) => sectionObserver.observe(section));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    let counted = false;
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || counted) return;
+      counted = true;
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const target = Number(el.dataset.count);
+        const duration = 1600;
+        const start = performance.now();
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.35 });
+    statsObserver.observe(document.getElementById('statsCard'));
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card');
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        projects.forEach((project) => {
+          project.classList.toggle('hide', filter !== 'all' && project.dataset.category !== filter);
+        });
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      form.classList.add('sent');
+      form.querySelector('button').textContent = 'Message Sent';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
