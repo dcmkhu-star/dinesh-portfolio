@@ -525,6 +525,7 @@
       margin-top: 14px;
       font-weight: 500;
     }
+    .success.error { color: #ff8d8d; }
     form.sent .success { display: block; }
     form.sent button { background: var(--green); border-color: var(--green); }
 
@@ -806,13 +807,14 @@
             <p>📞 <a href="tel:+16465925992">(646) 592-5992</a></p>
             <p>🔗 <a href="https://www.linkedin.com/in/dinesh-kumar-ammaiappan/" target="_blank" rel="noreferrer">linkedin.com/in/dinesh-kumar-ammaiappan</a></p>
           </div>
-          <form class="reveal" id="contactForm">
+          <form class="reveal" id="contactForm" action="https://formspree.io/f/mjglrowz" method="POST">
             <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
             <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
             <div class="field"><label for="topic">What's this about?</label><input id="topic" name="topic" placeholder="Job opportunity · Business idea · AndyBot · Just saying hi"></div>
             <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me more..." required></textarea></div>
             <button class="btn btn-primary" type="submit">Send Message →</button>
             <div class="success">✓ Message sent - I'll be in touch!</div>
+            <div class="success error">Something went wrong. Please email me directly.</div>
           </form>
         </div>
       </div>
@@ -905,11 +907,35 @@
     });
 
     const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      form.classList.add('sent');
-      form.querySelector('button').textContent = 'Message Sent';
-      form.reset();
+      const button = form.querySelector('button');
+      const success = form.querySelector('.success:not(.error)');
+      const error = form.querySelector('.success.error');
+      button.textContent = 'Sending...';
+      button.disabled = true;
+      form.classList.remove('sent', 'failed');
+      success.style.display = 'none';
+      error.style.display = 'none';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+
+        if (!response.ok) throw new Error('Formspree request failed');
+        form.classList.add('sent');
+        success.style.display = 'block';
+        button.textContent = 'Message Sent';
+        form.reset();
+      } catch (errorMessage) {
+        form.classList.add('failed');
+        error.style.display = 'block';
+        button.textContent = 'Send Message →';
+        button.disabled = false;
+      }
     });
   </script>
 </body>
