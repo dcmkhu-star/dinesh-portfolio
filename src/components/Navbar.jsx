@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX } from 'react-icons/fi'
 
 const LINKS = [
   { to: '/', label: 'Home' },
@@ -12,7 +10,6 @@ const LINKS = [
 ]
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -21,74 +18,76 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
+  const navBg = scrolled ? 'rgba(51,49,47,0.97)' : 'transparent'
+  const borderB = scrolled ? '1px solid var(--border)' : 'none'
+
   return (
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? 'rgba(5,13,24,0.92)' : 'transparent',
+        background: navBg,
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--border)' : 'none',
+        borderBottom: borderB,
         transition: 'all 0.3s',
       }}>
+        {/* Row 1 — Brand */}
         <div style={{
-          maxWidth: 1200, margin: '0 auto', padding: '0 2rem',
-          height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          maxWidth: 1200, margin: '0 auto', padding: '0.65rem 2rem 0.45rem',
         }}>
-          <NavLink to="/" style={{
+          <NavLink to="/" className="brand-link" style={{
             fontFamily: 'var(--font-display)',
             fontSize: '1.75rem', color: 'var(--gold)',
-          }}>D.</NavLink>
-
-          <ul className="nav-links" style={{ display: 'flex', gap: '2.5rem', listStyle: 'none' }}>
-            {LINKS.map(({ to, label }) => (
-              <li key={to}>
-                <NavLink to={to} end={to === '/'}
-                  style={({ isActive }) => ({
-                    fontSize: '0.875rem', fontWeight: 500,
-                    letterSpacing: '0.06em', textTransform: 'uppercase',
-                    color: isActive ? 'var(--gold)' : 'var(--text)',
-                    transition: 'color 0.2s',
-                  })}>
-                  {label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          <button className="nav-burger" onClick={() => setOpen(o => !o)}
-            style={{ display: 'none', background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer', fontSize: '1.4rem' }}>
-            {open ? <FiX /> : <FiMenu />}
-          </button>
+            position: 'relative',
+          }}>DKA.</NavLink>
         </div>
 
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              style={{ overflow: 'hidden', background: 'var(--bg-card)', borderBottom: '1px solid var(--border)' }}>
-              <ul style={{ listStyle: 'none', padding: '1rem 2rem 1.5rem' }}>
-                {LINKS.map(({ to, label }) => (
-                  <li key={to} style={{ padding: '0.6rem 0' }}>
-                    <NavLink to={to} end={to === '/'} onClick={() => setOpen(false)}
-                      style={({ isActive }) => ({ color: isActive ? 'var(--gold)' : 'var(--text)', fontWeight: isActive ? 600 : 400 })}>
-                      {label}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Row 2 — Nav links */}
+        <div style={{ borderTop: '2px solid rgba(58,38,8,0.45)' }}>
+          <div style={{
+            maxWidth: 1200, margin: '0 auto', padding: '0.4rem 2rem',
+            display: 'flex', alignItems: 'center', gap: '1.75rem',
+            flexWrap: 'wrap', overflowX: 'auto',
+          }}>
+            {LINKS.map(({ to, label }) => (
+              <NavLink key={to} to={to} end={to === '/'}
+                className="nav-item"
+                style={({ isActive }) => ({
+                  fontSize: '0.8rem', fontWeight: 500,
+                  letterSpacing: '0.07em', textTransform: 'uppercase',
+                  color: isActive ? 'var(--gold)' : 'var(--text)',
+                  transition: 'color 0.2s',
+                  whiteSpace: 'nowrap',
+                })}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
       </nav>
 
       <style>{`
-        @media (max-width: 768px) {
-          .nav-links { display: none !important; }
-          .nav-burger { display: block !important; }
+        .nav-item:hover { color: var(--gold) !important; }
+
+        .brand-link::after {
+          content: 'DINESH KUMAR AMMAIAPPAN';
+          position: absolute;
+          top: calc(100% + 10px);
+          left: 0;
+          background: var(--bg-card);
+          color: var(--text);
+          font-size: 0.68rem;
+          letter-spacing: 0.1em;
+          padding: 0.3rem 0.75rem;
+          border-radius: 6px;
+          border: 1px solid var(--border);
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s;
+          font-family: var(--font-body);
+          font-weight: 600;
         }
-        .nav-links a:hover { color: var(--gold) !important; }
+        .brand-link:hover::after { opacity: 1; }
       `}</style>
     </>
   )

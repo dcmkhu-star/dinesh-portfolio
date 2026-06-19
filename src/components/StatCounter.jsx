@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
-export default function StatCounter({ end, label, suffix = '+', prefix = '' }) {
+export default function StatCounter({ end, label, suffix = '+', prefix = '', numColor, labelColor }) {
   const [count, setCount] = useState(0)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
@@ -23,11 +23,11 @@ export default function StatCounter({ end, label, suffix = '+', prefix = '' }) {
       <p style={{
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-        color: 'var(--gold)', lineHeight: 1, marginBottom: '0.4rem',
+        color: numColor || 'var(--gold)', lineHeight: 1, marginBottom: '0.4rem',
       }}>
         {prefix}{count}{suffix}
       </p>
-      <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', letterSpacing: '0.04em' }}>
+      <p style={{ color: labelColor || 'var(--text-muted)', fontSize: '0.875rem', letterSpacing: '0.04em' }}>
         {label}
       </p>
     </div>

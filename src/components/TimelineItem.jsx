@@ -40,18 +40,33 @@ export default function TimelineItem({ date, title, subtitle, description, tags 
           {subtitle}
         </p>
 
-        {description && (
+        {description && Array.isArray(description) ? (
+          <ul style={{
+            listStyle: 'none', padding: 0, margin: '0 0 0.75rem',
+            display: 'flex', flexDirection: 'column', gap: '0.3rem',
+          }}>
+            {description.map((item, i) => (
+              <li key={i} style={{
+                display: 'flex', alignItems: 'flex-start', gap: '0.5rem',
+                color: 'var(--text)', fontSize: '0.9rem', lineHeight: 1.5,
+              }}>
+                <span style={{ color: 'var(--gold)', flexShrink: 0, marginTop: 1 }}>•</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        ) : description ? (
           <p style={{ color: 'var(--text)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '0.75rem' }}>
             {description}
           </p>
-        )}
+        ) : null}
 
         {tags.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
             {tags.map(t => (
               <span key={t} style={{
                 padding: '0.18rem 0.65rem',
-                background: 'rgba(26,74,122,0.4)',
+                background: 'rgba(162,62,22,0.1)',
                 border: '1px solid var(--border)',
                 borderRadius: 999, fontSize: '0.75rem',
                 color: 'var(--text-muted)',
