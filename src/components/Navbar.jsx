@@ -18,7 +18,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  const navBg = scrolled ? 'rgba(51,49,47,0.97)' : 'transparent'
+  const navBg = scrolled ? 'rgba(56,56,56,0.97)' : 'transparent'
   const borderB = scrolled ? '1px solid var(--border)' : 'none'
 
   return (

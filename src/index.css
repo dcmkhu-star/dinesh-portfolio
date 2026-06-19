@@ -1,28 +1,24 @@
 :root {
   --navy:      #C9743F;
-  --navy-mid:  #413E3B;
-  --navy-dark: #201E1C;
+  --navy-mid:  #444444;
+  --navy-dark: #252525;
   --gold:      #E8B85C;
-  --gold-dim:  rgba(232,184,92,0.38);
-  --slate:     #8A8480;
+  --gold-dim:  rgba(232,184,92,0.28);
+  --slate:     #888888;
   --warm-white:#FBF8F1;
   --text:      #FBF8F1;
-  --text-muted:rgba(251,248,241,0.72);
-  --bg:        #33312F;
-  --bg-card:   #413E3B;
-  --bg-dark:   #201E1C;
+  --text-muted:rgba(251,248,241,0.65);
+  --bg:        #383838;
+  --bg-card:   #454545;
+  --bg-dark:   #252525;
   --bg-cream:  #FBF8F1;
   --bg-mid:    #C9743F;
-  --border:    rgba(251,248,241,0.12);
+  --border:    rgba(251,248,241,0.1);
   --font-display: 'DM Serif Display', serif;
   --font-body:    'DM Sans', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-@media (pointer: fine) {
-  * { cursor: none !important; }
-}
 body {
   font-family: var(--font-body);
   background: var(--bg);
@@ -31,6 +27,38 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 
+/* ── Custom cursor ── */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+
+  .cursor-orb {
+    position: fixed;
+    top: 0; left: 0;
+    width: 12px; height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50% 50% 50% 0;
+    background: #E8B85C;
+    box-shadow: 0 0 14px rgba(232,184,92,0.8), 0 0 28px rgba(232,184,92,0.28);
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+    transition: width 180ms ease, height 180ms ease, margin 180ms ease, box-shadow 180ms ease;
+  }
+
+  body.cursor-hover .cursor-orb {
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    animation: orbPulse 1.15s ease-in-out infinite;
+  }
+
+  @keyframes orbPulse {
+    0%,  100% { box-shadow: 0 0 16px rgba(232,184,92,0.9),  0 0 34px rgba(232,184,92,0.3); }
+    50%        { box-shadow: 0 0 22px rgba(232,184,92,1),    0 0 52px rgba(232,184,92,0.55); }
+  }
+}
+
+/* ── Ambient blob keyframes ── */
 @keyframes float-blob {
   0%,  100% { transform: translate(0,     0)     scale(1);    }
   33%        { transform: translate(28px, -22px)  scale(1.06); }
