@@ -13,6 +13,8 @@
   --bg-dark:   #252525;
   --bg-cream:  #FBF8F1;
   --bg-mid:    #C9743F;
+  --ink:       #3A2608;
+  --ink-muted: rgba(58,38,8,0.72);
   --border:    rgba(251,248,241,0.1);
   --font-display: 'DM Serif Display', serif;
   --font-body:    'DM Sans', sans-serif;

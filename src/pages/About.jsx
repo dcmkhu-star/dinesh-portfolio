@@ -75,20 +75,20 @@ export default function About() {
             viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.75rem', color: 'var(--warm-white)', marginBottom: '1.25rem',
+              fontSize: '1.75rem', color: 'var(--ink)', marginBottom: '1.25rem',
             }}>
               Rigorous analyst.<br />Resourceful builder.
             </h2>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '1rem', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--ink-muted)', lineHeight: 1.8, marginBottom: '1rem', fontSize: '0.95rem' }}>
               I've spent 2+ years inside regulated operations — pharmacy purchasing, compliance, vendor management.
               The kind of environment where errors cost real money and data keeps systems honest.
             </p>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '1rem', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--ink-muted)', lineHeight: 1.8, marginBottom: '1rem', fontSize: '0.95rem' }}>
               Alongside the operations work, I've run independent research projects across finance, consumer behavior,
               and pharmaceuticals — building a habit of finding patterns that aren't obvious and turning them into
               something useful.
             </p>
-            <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--ink-muted)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.95rem' }}>
               I'm currently open to roles, ventures, and collaborations where I can do both: dig into problems
               analytically and build solutions that actually work.
             </p>
